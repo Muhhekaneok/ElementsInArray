@@ -8,6 +8,7 @@ public class Test {
         System.out.println(Arrays.toString(array));
         System.out.println("max element = " + getBiggestElement(array));
         System.out.println("min element = " + getSmallestElement(array));
+        System.out.println("sum of elements = " + sumOfElements(array));
     }
 
     private static int[] getArray() {
@@ -32,5 +33,12 @@ public class Test {
             if (minElem > element)
                 minElem = element;
         return minElem;
+    }
+
+    private static int sumOfElements(int[] array) {
+        int sum = 0;
+        for (int element : array)
+            sum += element;
+        return sum;
     }
 }
