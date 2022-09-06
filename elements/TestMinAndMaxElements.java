@@ -2,7 +2,7 @@ package justforfun.array.elements;
 
 import java.util.Arrays;
 
-public class Test {
+public class TestMinAndMaxElements {
     public static void main(String[] args) {
         int[] array = getArray();
         System.out.println(Arrays.toString(array));
