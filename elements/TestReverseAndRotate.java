@@ -19,16 +19,40 @@ public class TestReverseAndRotate {
 
         int[] arr = {1, 2, 3, 4, 5, 6, 7, 8};
         System.out.println("source array = " + Arrays.toString(arr));
-        rotateArray(arr, 3);
-        System.out.println("rotated array = " + Arrays.toString(arr));
+        System.out.println("rotate by 3 to <-- " + Arrays.toString(rotateToTheLeft(arr, 3)));
+        System.out.println("rotate by 3 to --> " + Arrays.toString(rotateToTheRight(arr, 3)));
     }
 
-    private static void rotateArray(int[] arr, int k) {
-        k = k % arr.length;
-        for (int i = 0; i < k; i++) {
-            int tmp = arr[arr.length - 1];
-            arr[arr.length - 1] = arr[i];
-            arr[i] = tmp;
+    static int[] rotateToTheLeft(int[] array, int shift) {
+        int length = array.length;
+        int[] rotatedArr = new int[length];
+
+        int rotatedArrayIndex = 0;
+
+        for (int i = shift; i < length; i++) {
+            rotatedArr[rotatedArrayIndex] = array[i];
+            rotatedArrayIndex++;
         }
+
+        for (int i = 0; i < shift; i++) {
+            rotatedArr[rotatedArrayIndex] = array[i];
+            rotatedArrayIndex++;
+        }
+        return rotatedArr;
+    }
+
+    static int[] rotateToTheRight(int[] array, int shift) {
+        shift = shift % array.length;   // If rotation is greater than size of array
+        int length = array.length;
+        int[] rotatedArr = new int[length];
+
+        for (int i = 0; i < length; i++) {
+            if (i < shift) {
+                rotatedArr[i] = array[length + i - shift];
+            } else {
+                rotatedArr[i] = array[i - shift];
+            }
+        }
+        return rotatedArr;
     }
 }
